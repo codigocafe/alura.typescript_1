@@ -23,8 +23,16 @@ export class NegociacaoController {
     );
   }
 
+  limparFormulario(){
+    this.inputData.value = '';
+    this.inputQuantidade.value = '';
+    this.inputValor.value = '';
+    this.inputData.focus();
+  }
+
   adicionar(): void {
     const negociacao = this.criarNegociacao();
+    this.limparFormulario();
     console.log(negociacao);
   }
 }

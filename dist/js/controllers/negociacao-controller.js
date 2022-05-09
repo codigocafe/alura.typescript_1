@@ -12,8 +12,15 @@ export class NegociacaoController {
         const valor = parseFloat(this.inputValor.value);
         return new Negociacao(date, quantidade, valor);
     }
+    limparFormulario() {
+        this.inputData.value = '';
+        this.inputQuantidade.value = '';
+        this.inputValor.value = '';
+        this.inputData.focus();
+    }
     adicionar() {
         const negociacao = this.criarNegociacao();
+        this.limparFormulario();
         console.log(negociacao);
     }
 }
