@@ -5,12 +5,15 @@ export class NegociacaoController {
         this.inputQuantidade = document.querySelector("#quantidade");
         this.inputValor = document.querySelector('#valor');
     }
-    adicionar() {
+    criarNegociacao() {
         const exp = /-/g;
         const date = new Date(this.inputData.value.replace(exp, ','));
         const quantidade = parseInt(this.inputQuantidade.value);
-        const valor = parseInt(this.inputValor.value);
-        const negociacao = new Negociacao(date, quantidade, valor);
+        const valor = parseFloat(this.inputValor.value);
+        return new Negociacao(date, quantidade, valor);
+    }
+    adicionar() {
+        const negociacao = this.criarNegociacao();
         console.log(negociacao);
     }
 }
