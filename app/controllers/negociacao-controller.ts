@@ -18,7 +18,7 @@ export class NegociacaoController {
     this.negociacoesView.update(this.negociacoes);
   }
 
-  criarNegociacao(): Negociacao {
+  private criarNegociacao(): Negociacao {
     const exp = /-/g;
     const date = new Date(this.inputData.value.replace(exp, ','));
     const quantidade = parseInt(this.inputQuantidade.value);
@@ -30,18 +30,22 @@ export class NegociacaoController {
     );
   }
 
-  limparFormulario(){
+  private limparFormulario(){
     this.inputData.value = '';
     this.inputQuantidade.value = '';
     this.inputValor.value = '';
     this.inputData.focus();
   }
 
-  adicionar(): void {
+  public adicionar(): void {
     const negociacao = this.criarNegociacao();
     this.negociacoes.adicionar(negociacao);
+    this.limparFormulario();
+    this.atualizaView();
+  }
+
+  private atualizaView():void {
     this.negociacoesView.update(this.negociacoes);
     this.mensagemView.update('Negociação adicionado com sucesso.');
-    this.limparFormulario();
   }
 }

@@ -28,8 +28,11 @@ export class NegociacaoController {
     adicionar() {
         const negociacao = this.criarNegociacao();
         this.negociacoes.adicionar(negociacao);
+        this.limparFormulario();
+        this.atualizaView();
+    }
+    atualizaView() {
         this.negociacoesView.update(this.negociacoes);
         this.mensagemView.update('Negociação adicionado com sucesso.');
-        this.limparFormulario();
     }
 }
