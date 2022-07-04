@@ -3,9 +3,10 @@ export abstract class View <T> {
   protected elemento:HTMLElement;
   private escapar = false;
 
-  constructor(seletor:string, escapar:boolean){
+  constructor(seletor:string, escapar?:boolean){
     this.elemento = document.querySelector(seletor);
-    this.escapar = escapar;
+    if(escapar)
+      this.escapar = escapar;
   }
 
   update(model:T):void{
